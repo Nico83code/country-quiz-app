@@ -1,11 +1,14 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useQuiz } from '@/context/QuizContext';
 
 export default function HomeClient() {
   const router = useRouter();
+  const { startQuiz } = useQuiz();
 
   const handleStartQuiz = () => {
+    startQuiz();
     router.push('/quiz');
   };
 
@@ -14,7 +17,7 @@ export default function HomeClient() {
       <h1 className='text-3xl font-bold mb-4'>Country Quiz</h1>
       <p className='text-lg mb-2'>Test your knowledge of country names!</p>
       <p className='text-base mb-6'>
-        10 questions - Let's see how many you can get right!
+        10 questions - Let&apos;s see how many you can get right!
       </p>
 
       <button

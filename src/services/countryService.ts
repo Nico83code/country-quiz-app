@@ -28,7 +28,8 @@ export async function fetchCountries(): Promise<Country[]> {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ query }),
-      next: { revalidate: 86400 }, // 1 uur = 3600 seconden 24 uur = 86400 seconden
+      cache: 'force-cache',
+      next: { revalidate: 86400 },
     });
 
     const result: GraphQLResponse = await response.json();

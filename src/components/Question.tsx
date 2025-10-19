@@ -1,48 +1,52 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Question as QuestionType } from '@/types/country';
 
-const MOCK_QUESTION = {
-  id: '1',
-  question: `Which country is this: code 'US'?`,
-  correctAnswer: 'United States',
-  options: ['United States', 'Canada', 'Mexico', 'Brazil'],
-};
+interface QuestionProps {
+  question: QuestionType;
+  onAnswer: (answer: string) => void;
+  isAnswered: boolean;
+}
 
-export default function Question() {
+export default function Question({
+  question,
+  onAnswer,
+  isAnswered,
+}: QuestionProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [isAnswered, setIsAnswered] = useState(false);
 
   const handleSelectAnswer = (answer: string) => {
     if (isAnswered) return;
     setSelectedAnswer(answer);
-    setIsAnswered(true);
-  };
-
-  const getButtonClassName = (option: string) => {
-    const baseClasses =
-      'block my-2.5 p-2.5 w-full text-left border border-gray-300 rounded-lg transition-colors';
-
-    if (isAnswered && option === MOCK_QUESTION.correctAnswer) {
-      return `${baseClasses} bg-green-200 cursor-default`;
-    }
-    if (isAnswered && option === selectedAnswer) {
-      return `${baseClasses} bg-red-200 cursor-default`;
-    }
-    return `${baseClasses} bg-white hover:bg-gray-50 cursor-pointer`;
+    onAnswer(answer);
   };
 
   return (
-    <div className='p-5 max-w-2xl mx-auto'>
-      <h2 className='text-2xl font-semibold mb-4'>{MOCK_QUESTION.question}</h2>
+    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+      <h2>{question.question}</h2>
 
       <div>
-        {MOCK_QUESTION.options.map((option, index) => (
+        {question.options.map((option, index) => (
           <button
             key={index}
             onClick={() => handleSelectAnswer(option)}
             disabled={isAnswered}
-            className={getButtonClassName(option)}
+            style={{
+              display: 'block',
+              margin: '10px 0',
+              padding: '10px',
+              width: '100%',
+              textAlign: 'left',
+              border: '1px solid #ccc',
+              backgroundColor:
+                isAnswered && option === question.correctAnswer
+                  ? 'lightgreen'
+                  : isAnswered && option === selectedAnswer
+                  ? 'lightcoral'
+                  : 'white',
+              cursor: isAnswered ? 'default' : 'pointer',
+            }}
           >
             {option}
           </button>
@@ -50,10 +54,10 @@ export default function Question() {
       </div>
 
       {isAnswered && (
-        <p className='mt-5 text-lg font-medium'>
-          {selectedAnswer === MOCK_QUESTION.correctAnswer
+        <p style={{ marginTop: '20px' }}>
+          {selectedAnswer === question.correctAnswer
             ? '✓ Correct!'
-            : `✗ Wrong! Answer: ${MOCK_QUESTION.correctAnswer}`}
+            : `✗ Wrong! Answer: ${question.correctAnswer}`}
         </p>
       )}
     </div>
