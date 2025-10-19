@@ -1,8 +1,12 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 export default function HomeClient() {
+  const router = useRouter();
+
   const handleStartQuiz = () => {
-    alert('Quiz would start here!');
+    router.push('/quiz');
   };
 
   return (

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 const MOCK_QUESTION = {
   id: '1',
-  question: 'Which country is this: United States?',
+  question: `Which country is this: code 'US'?`,
   correctAnswer: 'United States',
   options: ['United States', 'Canada', 'Mexico', 'Brazil'],
 };

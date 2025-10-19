@@ -1,5 +1,5 @@
-import Result from '@/components/Result';
+import HomeClient from '@/components/HomeClient';
 
 export default function Home() {
-  return <Result />;
+  return <HomeClient />;
 }
