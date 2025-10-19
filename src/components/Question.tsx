@@ -19,9 +19,22 @@ export default function Question() {
     setIsAnswered(true);
   };
 
+  const getButtonClassName = (option: string) => {
+    const baseClasses =
+      'block my-2.5 p-2.5 w-full text-left border border-gray-300 rounded-lg transition-colors';
+
+    if (isAnswered && option === MOCK_QUESTION.correctAnswer) {
+      return `${baseClasses} bg-green-200 cursor-default`;
+    }
+    if (isAnswered && option === selectedAnswer) {
+      return `${baseClasses} bg-red-200 cursor-default`;
+    }
+    return `${baseClasses} bg-white hover:bg-gray-50 cursor-pointer`;
+  };
+
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h2>{MOCK_QUESTION.question}</h2>
+    <div className='p-5 max-w-2xl mx-auto'>
+      <h2 className='text-2xl font-semibold mb-4'>{MOCK_QUESTION.question}</h2>
 
       <div>
         {MOCK_QUESTION.options.map((option, index) => (
@@ -29,21 +42,7 @@ export default function Question() {
             key={index}
             onClick={() => handleSelectAnswer(option)}
             disabled={isAnswered}
-            style={{
-              display: 'block',
-              margin: '10px 0',
-              padding: '10px',
-              width: '100%',
-              textAlign: 'left',
-              border: '1px solid #ccc',
-              backgroundColor:
-                isAnswered && option === MOCK_QUESTION.correctAnswer
-                  ? 'lightgreen'
-                  : isAnswered && option === selectedAnswer
-                  ? 'lightcoral'
-                  : 'white',
-              cursor: isAnswered ? 'default' : 'pointer',
-            }}
+            className={getButtonClassName(option)}
           >
             {option}
           </button>
@@ -51,7 +50,7 @@ export default function Question() {
       </div>
 
       {isAnswered && (
-        <p style={{ marginTop: '20px' }}>
+        <p className='mt-5 text-lg font-medium'>
           {selectedAnswer === MOCK_QUESTION.correctAnswer
             ? '✓ Correct!'
             : `✗ Wrong! Answer: ${MOCK_QUESTION.correctAnswer}`}
