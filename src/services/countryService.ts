@@ -42,7 +42,7 @@ export async function fetchCountries(): Promise<Country[]> {
       return {
         code,
         name: country.name,
-        flagUrl: `https://flagcdn.com/w320/${code}.png`,
+        flagUrl: `https://flagcdn.com/w320/${code}.webp`,
       } as Country;
     });
   } catch (error) {
