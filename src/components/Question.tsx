@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Question as QuestionType } from '@/types/country';
+import Image from 'next/image';
 
 interface QuestionProps {
   question: QuestionType;
@@ -37,28 +38,44 @@ export default function Question({
 
   return (
     <div className='p-5 max-w-2xl mx-auto'>
-      <h2 className='text-2xl font-semibold mb-4'>{question.question}</h2>
+      <div className='bg-white rounded-xl shadow-lg p-8 mb-6'>
+        {question.imageUrl && (
+          <div className='mb-6 flex justify-center'>
+            <div className='relative w-80 h-48 rounded-lg overflow-hidden shadow-md'>
+              <Image
+                src={question.imageUrl}
+                alt='Flag'
+                fill
+                className='object-cover'
+                priority
+              />
+            </div>
+          </div>
+        )}
 
-      <div>
-        {question.options.map((option, index) => (
-          <button
-            key={index}
-            onClick={() => handleSelectAnswer(option)}
-            disabled={isAnswered}
-            className={getButtonClassName(option)}
-          >
-            {option}
-          </button>
-        ))}
+        <h2 className='text-2xl font-semibold mb-4'>{question.question}</h2>
+
+        <div>
+          {question.options.map((option, index) => (
+            <button
+              key={index}
+              onClick={() => handleSelectAnswer(option)}
+              disabled={isAnswered}
+              className={getButtonClassName(option)}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+
+        {isAnswered && (
+          <p className='mt-5 text-lg font-medium'>
+            {selectedAnswer === question.correctAnswer
+              ? '✓ Correct!'
+              : `✗ Wrong! Answer: ${question.correctAnswer}`}
+          </p>
+        )}
       </div>
-
-      {isAnswered && (
-        <p className='mt-5 text-lg font-medium'>
-          {selectedAnswer === question.correctAnswer
-            ? '✓ Correct!'
-            : `✗ Wrong! Answer: ${question.correctAnswer}`}
-        </p>
-      )}
     </div>
   );
 }

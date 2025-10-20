@@ -1,6 +1,7 @@
 export interface Country {
   code: string;
   name: string;
+  flagUrl: string;
 }
 
 export interface Question {
@@ -8,6 +9,7 @@ export interface Question {
   question: string;
   correctAnswer: string;
   options: string[];
+  imageUrl: string;
 }
 
 export interface QuizState {

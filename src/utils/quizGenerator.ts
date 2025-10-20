@@ -33,10 +33,10 @@ function generateFlagQuestion(
 
   return {
     id: `flag-${country.code}-${Date.now()}`,
-
-    question: `Which country is this: ${country.code}?`,
+    question: 'Which country does this flag belong to?',
     correctAnswer: country.name,
     options,
+    imageUrl: country.flagUrl,
   };
 }
 
