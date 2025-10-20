@@ -1,4 +1,5 @@
 import { Country, Question } from '@/types/country';
+import content from '@/content/content.json';
 
 function shuffleArray<T>(array: T[]): T[] {
   const newArray = [...array];
@@ -33,7 +34,7 @@ function generateFlagQuestion(
 
   return {
     id: `flag-${country.code}-${Date.now()}`,
-    question: 'Which country does this flag belong to?',
+    question: content.question.flagQuestion,
     correctAnswer: country.name,
     options,
     imageUrl: country.flagUrl,

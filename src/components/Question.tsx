@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Question as QuestionType } from '@/types/country';
 import Image from 'next/image';
+import content from '@/content/content.json';
 
 interface QuestionProps {
   question: QuestionType;
@@ -44,7 +45,7 @@ export default function Question({
             <div className='relative w-80 h-48 rounded-lg overflow-hidden shadow-md'>
               <Image
                 src={question.imageUrl}
-                alt='Flag'
+                alt={content.question.imageAlt}
                 fill
                 className='object-cover'
                 priority
@@ -71,8 +72,8 @@ export default function Question({
         {isAnswered && (
           <p className='mt-5 text-lg font-medium'>
             {selectedAnswer === question.correctAnswer
-              ? '✓ Correct!'
-              : `✗ Wrong! Answer: ${question.correctAnswer}`}
+              ? content.question.correct
+              : `${content.question.wrongPrefix} ${question.correctAnswer}`}
           </p>
         )}
       </div>

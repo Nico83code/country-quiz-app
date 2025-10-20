@@ -31,7 +31,7 @@ export function QuizProvider({ children }: { children: ReactNode }) {
 
   const startQuiz = () => {
     // Generate 10 flag questions
-    const questions = generateQuestions(state.countries, 2);
+    const questions = generateQuestions(state.countries, 10);
 
     if (questions.length === 0) {
       alert('Unable to generate quiz. Please try again.');

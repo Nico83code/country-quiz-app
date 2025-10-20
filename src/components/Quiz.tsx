@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useQuiz } from '@/context/QuizContext';
 import Question from './Question';
+import content from '@/content/content.json';
 
 export default function Quiz() {
   const router = useRouter();
@@ -40,7 +41,7 @@ export default function Quiz() {
         <div className='text-center'>
           <div className='animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto'></div>
           <p className='mt-4 text-gray-600 dark:text-gray-400'>
-            Loading quiz...
+            {content.quiz.loadingQuiz}
           </p>
         </div>
       </div>
@@ -62,10 +63,12 @@ export default function Quiz() {
       <div className='w-full max-w-2xl mx-auto mb-8'>
         <div className='flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2'>
           <span>
-            Question {currentQuestionIndex + 1} of {questions.length}
+            {content.quiz.questionLabel} {currentQuestionIndex + 1}{' '}
+            {content.quiz.of} {questions.length}
           </span>
           <span>
-            Score: {score}/{currentQuestionIndex + (isAnswered ? 1 : 0)}
+            {content.quiz.scoreLabel} {score}/
+            {currentQuestionIndex + (isAnswered ? 1 : 0)}
           </span>
         </div>
         <div className='w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden'>
@@ -89,8 +92,8 @@ export default function Quiz() {
             className='px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors duration-200'
           >
             {currentQuestionIndex < questions.length - 1
-              ? 'Next Question'
-              : 'See Results'}
+              ? content.quiz.nextQuestion
+              : content.quiz.seeResults}
           </button>
         </div>
       )}

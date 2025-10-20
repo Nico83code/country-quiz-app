@@ -1,0 +1,37 @@
+{
+  "home": {
+    "title": "Country Quiz",
+    "description": "Test your knowledge of country names!",
+    "questionsInfo": "10 questions - Let's see how many you can get right!",
+    "startButton": "Start Quiz"
+  },
+  "question": {
+    "imageAlt": "Flag",
+    "correct": "✓ Correct!",
+    "wrongPrefix": "✗ Wrong! Answer:",
+    "flagQuestion": "Which country does this flag belong to?"
+  },
+  "quiz": {
+    "loadingQuiz": "Loading quiz...",
+    "questionLabel": "Question",
+    "of": "of",
+    "scoreLabel": "Score:",
+    "nextQuestion": "Next Question",
+    "seeResults": "See Results"
+  },
+  "result": {
+    "loadingResults": "Loading results...",
+    "percentCorrect": "% Correct",
+    "grades": {
+      "excellent": "Excellent!",
+      "greatJob": "Great Job!",
+      "goodEffort": "Good Effort!",
+      "keepPracticing": "Keep Practicing!"
+    },
+    "quizSummary": "Quiz Summary",
+    "correct": "Correct",
+    "wrong": "Wrong",
+    "total": "Total",
+    "playAgain": "Play Again"
+  }
+}
