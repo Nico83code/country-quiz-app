@@ -8,21 +8,21 @@ describe('generateQuestions', () => {
       name: 'United States',
       flagUrl: 'https://flagcdn.com/w320/us.webp',
     },
-    { code: 'ca', name: 'Canada', flagUrl: 'https://flagcdn.com/w320/ca.webp' },
-    { code: 'mx', name: 'Mexico', flagUrl: 'https://flagcdn.com/w320/mx.webp' },
-    { code: 'br', name: 'Brazil', flagUrl: 'https://flagcdn.com/w320/br.webp' },
+    { code: 'ca', name: 'Canada', flagUrl: 'https://flagcdn.com/w640/ca.webp' },
+    { code: 'mx', name: 'Mexico', flagUrl: 'https://flagcdn.com/w640/mx.webp' },
+    { code: 'br', name: 'Brazil', flagUrl: 'https://flagcdn.com/w640/br.webp' },
     {
       code: 'ar',
       name: 'Argentina',
-      flagUrl: 'https://flagcdn.com/w320/ar.webp',
+      flagUrl: 'https://flagcdn.com/w640/ar.webp',
     },
-    { code: 'fr', name: 'France', flagUrl: 'https://flagcdn.com/w320/fr.webp' },
+    { code: 'fr', name: 'France', flagUrl: 'https://flagcdn.com/w640/fr.webp' },
     {
       code: 'de',
       name: 'Germany',
-      flagUrl: 'https://flagcdn.com/w320/de.webp',
+      flagUrl: 'https://flagcdn.com/w640/de.webp',
     },
-    { code: 'it', name: 'Italy', flagUrl: 'https://flagcdn.com/w320/it.webp' },
+    { code: 'it', name: 'Italy', flagUrl: 'https://flagcdn.com/w640/it.webp' },
   ];
 
   it('should generate the correct number of questions', () => {

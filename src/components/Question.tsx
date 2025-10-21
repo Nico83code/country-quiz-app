@@ -25,36 +25,35 @@ export default function Question({
   };
 
   const getButtonClassName = (option: string) => {
-    const baseClasses =
-      'block my-2.5 p-2.5 w-full text-left border border-gray-300 rounded-lg transition-colors';
-
     if (isAnswered && option === question.correctAnswer) {
-      return `${baseClasses} bg-green-200 cursor-default`;
+      return 'btn-answer-correct';
     }
     if (isAnswered && option === selectedAnswer) {
-      return `${baseClasses} bg-red-200 cursor-default`;
+      return 'btn-answer-incorrect';
     }
-    return `${baseClasses} bg-white hover:bg-gray-50 cursor-pointer`;
+    return 'btn-answer';
   };
 
   return (
-    <div className='p-5 max-w-2xl mx-auto'>
-      <div className='bg-white rounded-xl shadow-lg p-8 mb-6'>
+    <div className='px-5 max-w-2xl mx-auto'>
+      <div className='card-light'>
         {question.imageUrl && (
-          <div className='mb-6 flex justify-center'>
-            <div className='relative w-80 h-48 rounded-lg overflow-hidden shadow-md'>
+          <div className='mb-4 flex justify-center'>
+            <div className='relative w-full max-w-sm aspect-[3/2] rounded-xl overflow-hidden border-2 border-gray-100 bg-gray-50'>
               <Image
                 src={question.imageUrl}
                 alt={content.question.imageAlt}
                 fill
-                className='object-cover'
+                className='object-contain'
                 priority
               />
             </div>
           </div>
         )}
 
-        <h2 className='text-2xl font-semibold mb-4'>{question.question}</h2>
+        <h2 className='text-xl font-semibold mb-4 text-gray-800'>
+          {question.question}
+        </h2>
 
         <div>
           {question.options.map((option, index) => (
@@ -70,11 +69,17 @@ export default function Question({
         </div>
 
         {isAnswered && (
-          <p className='mt-5 text-lg font-medium'>
+          <div
+            className={`mt-4 p-3 rounded-xl text-center font-medium ${
+              selectedAnswer === question.correctAnswer
+                ? 'bg-green-50 text-green-700 border-2 border-green-200'
+                : 'bg-red-50 text-red-700 border-2 border-red-200'
+            }`}
+          >
             {selectedAnswer === question.correctAnswer
               ? content.question.correct
               : `${content.question.wrongPrefix} ${question.correctAnswer}`}
-          </p>
+          </div>
         )}
       </div>
     </div>

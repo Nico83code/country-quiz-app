@@ -38,9 +38,9 @@ export default function Quiz() {
   if (!currentQuestion || !quizStarted) {
     return (
       <div className='min-h-screen flex items-center justify-center'>
-        <div className='text-center'>
-          <div className='animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto'></div>
-          <p className='mt-4 text-gray-600 dark:text-gray-400'>
+        <div className='card-light text-center max-w-md mx-4'>
+          <div className='animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500 mx-auto'></div>
+          <p className='mt-4 text-gray-600 font-medium'>
             {content.quiz.loadingQuiz}
           </p>
         </div>
@@ -59,23 +59,25 @@ export default function Quiz() {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
-    <div className='min-h-screen py-12 px-4'>
-      <div className='w-full max-w-2xl mx-auto mb-8'>
-        <div className='flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2'>
-          <span>
-            {content.quiz.questionLabel} {currentQuestionIndex + 1}{' '}
-            {content.quiz.of} {questions.length}
-          </span>
-          <span>
-            {content.quiz.scoreLabel} {score}/
-            {currentQuestionIndex + (isAnswered ? 1 : 0)}
-          </span>
-        </div>
-        <div className='w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden'>
-          <div
-            className='bg-blue-500 h-full transition-all duration-300 ease-out'
-            style={{ width: `${progress}%` }}
-          />
+    <div className='min-h-screen py-6 px-4'>
+      <div className='w-full max-w-2xl mx-auto mb-4'>
+        <div className='card-light'>
+          <div className='flex justify-between text-sm font-medium text-gray-600 mb-2'>
+            <span>
+              {content.quiz.questionLabel} {currentQuestionIndex + 1}{' '}
+              {content.quiz.of} {questions.length}
+            </span>
+            <span className='text-blue-600'>
+              {content.quiz.scoreLabel} {score}/
+              {currentQuestionIndex + (isAnswered ? 1 : 0)}
+            </span>
+          </div>
+          <div className='w-full bg-gray-100 rounded-full h-3 overflow-hidden'>
+            <div
+              className='bg-blue-500 h-full transition-all duration-300 ease-out'
+              style={{ width: `${progress}%` }}
+            />
+          </div>
         </div>
       </div>
 
@@ -86,11 +88,8 @@ export default function Quiz() {
       />
 
       {isAnswered && (
-        <div className='w-full max-w-2xl mx-auto mt-6 flex justify-center'>
-          <button
-            onClick={handleNext}
-            className='px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors duration-200'
-          >
+        <div className='w-full max-w-2xl mx-auto mt-4 mb-6 flex justify-center px-5'>
+          <button onClick={handleNext} className='btn-primary w-full sm:w-auto'>
             {currentQuestionIndex < questions.length - 1
               ? content.quiz.nextQuestion
               : content.quiz.seeResults}

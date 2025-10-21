@@ -15,19 +15,29 @@ export default function HomeClient() {
 
   return (
     <div className='min-h-screen flex items-center justify-center px-4 py-12'>
-      <div className='w-full max-w-4xl'>
-        <div className='text-center mb-12'>
-          <h1 className='text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent'>
+      <div className='w-full max-w-2xl'>
+        <div className='card-light text-center'>
+          <div className='mb-6'>
+            <div className='w-20 h-20 mx-auto mb-6 bg-gradient-to-br rounded-2xl flex items-center justify-center text-4xl'>
+              🌍
+            </div>
+          </div>
+
+          <h1 className='text-4xl font-bold mb-4 text-gray-800'>
             {content.home.title}
           </h1>
-          <p className='text-lg text-gray-600 dark:text-gray-400'>
+
+          <p className='text-lg text-gray-600 mb-3'>
             {content.home.description}
           </p>
-          <p className='text-base mb-6'>{content.home.questionsInfo}</p>
+
+          <p className='text-base text-gray-500 mb-8'>
+            {content.home.questionsInfo}
+          </p>
 
           <button
             onClick={handleStartQuiz}
-            className='mt-5 px-5 py-2.5 text-base cursor-pointer bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors'
+            className='btn-primary text-lg px-8 py-4'
           >
             {content.home.startButton}
           </button>

@@ -1,1 +1,29 @@
 @import 'tailwindcss';
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-blue-50 via-white to-purple-50 min-h-screen;
+  }
+}
+
+@layer components {
+  .card-light {
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100 p-6;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg;
+  }
+
+  .btn-answer {
+    @apply block my-2 p-3 w-full text-left rounded-xl transition-all duration-200 font-medium border-2 border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50 cursor-pointer shadow-sm hover:shadow-md;
+  }
+
+  .btn-answer-correct {
+    @apply block my-2 p-3 w-full text-left rounded-xl font-medium border-2 border-green-400 bg-green-50 text-green-800 cursor-default shadow-sm;
+  }
+
+  .btn-answer-incorrect {
+    @apply block my-2 p-3 w-full text-left rounded-xl font-medium border-2 border-red-400 bg-red-50 text-red-800 cursor-default shadow-sm;
+  }
+}
