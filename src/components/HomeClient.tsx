@@ -14,14 +14,14 @@ export default function HomeClient() {
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center px-4 py-12'>
+    <main className='min-h-screen flex items-center justify-center px-4 py-12'>
       <div className='w-full max-w-2xl'>
-        <div className='card-light text-center'>
-          <div className='mb-6'>
+        <section className='card-light text-center'>
+          <header className='mb-6'>
             <div className='w-20 h-20 mx-auto mb-6 bg-gradient-to-br rounded-2xl flex items-center justify-center text-4xl'>
               🌍
             </div>
-          </div>
+          </header>
 
           <h1 className='text-4xl font-bold mb-4 text-gray-800'>
             {content.home.title}
@@ -38,11 +38,12 @@ export default function HomeClient() {
           <button
             onClick={handleStartQuiz}
             className='btn-primary text-lg px-8 py-4'
+            aria-label='Start the flag quiz'
           >
             {content.home.startButton}
           </button>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

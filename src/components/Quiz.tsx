@@ -37,14 +37,14 @@ export default function Quiz() {
 
   if (!currentQuestion || !quizStarted) {
     return (
-      <div className='min-h-screen flex items-center justify-center'>
+      <main className='min-h-screen flex items-center justify-center'>
         <div className='card-light text-center max-w-md mx-4'>
           <div className='animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500 mx-auto'></div>
           <p className='mt-4 text-gray-600 font-medium'>
             {content.quiz.loadingQuiz}
           </p>
         </div>
-      </div>
+      </main>
     );
   }
 
@@ -59,8 +59,11 @@ export default function Quiz() {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
-    <div className='min-h-screen py-6 px-4'>
-      <div className='w-full max-w-2xl mx-auto mb-4'>
+    <main className='min-h-screen py-6 px-4'>
+      <section
+        className='w-full max-w-2xl mx-auto mb-4'
+        aria-label='Quiz progress'
+      >
         <div className='card-light'>
           <div className='flex justify-between text-sm font-medium text-gray-600 mb-2'>
             <span>
@@ -79,7 +82,7 @@ export default function Quiz() {
             />
           </div>
         </div>
-      </div>
+      </section>
 
       <Question
         question={currentQuestion}
@@ -96,6 +99,6 @@ export default function Quiz() {
           </button>
         </div>
       )}
-    </div>
+    </main>
   );
 }

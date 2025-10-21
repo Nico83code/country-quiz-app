@@ -35,10 +35,10 @@ export default function Question({
   };
 
   return (
-    <div className='px-5 max-w-2xl mx-auto'>
-      <div className='card-light'>
+    <section className='px-5 max-w-2xl mx-auto'>
+      <article className='card-light'>
         {question.imageUrl && (
-          <div className='mb-4 flex justify-center'>
+          <figure className='mb-4 flex justify-center'>
             <div className='relative w-full max-w-sm aspect-[3/2] rounded-xl overflow-hidden border-2 border-gray-100 bg-gray-50'>
               <Image
                 src={question.imageUrl}
@@ -48,7 +48,7 @@ export default function Question({
                 priority
               />
             </div>
-          </div>
+          </figure>
         )}
 
         <h2 className='text-xl font-semibold mb-4 text-gray-800'>
@@ -81,7 +81,7 @@ export default function Question({
               : `${content.question.wrongPrefix} ${question.correctAnswer}`}
           </div>
         )}
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }
