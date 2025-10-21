@@ -14,9 +14,15 @@ interface QuizContextType extends QuizState {
 
 const QuizContext = createContext<QuizContextType | undefined>(undefined);
 
-export function QuizProvider({ children }: { children: ReactNode }) {
+export function QuizProvider({
+  children,
+  initialCountries = [],
+}: {
+  children: ReactNode;
+  initialCountries?: Country[];
+}) {
   const [state, setState] = useState<QuizState>({
-    countries: [],
+    countries: initialCountries,
     questions: [],
     currentQuestionIndex: 0,
     userAnswers: {},

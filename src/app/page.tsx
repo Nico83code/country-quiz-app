@@ -1,15 +1,7 @@
-import { fetchCountries } from '@/services/countryService';
 import HomeClient from '@/components/HomeClient';
-import QuizInitializer from '@/components/QuizInitializer';
 
-export default async function Home() {
-  const countries = await fetchCountries();
-
-  return (
-    <QuizInitializer countries={countries}>
-      <HomeClient />
-    </QuizInitializer>
-  );
+export default function Home() {
+  return <HomeClient />;
 }
 
 export const metadata = {

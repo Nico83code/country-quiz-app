@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { QuizProvider } from '@/context/QuizContext';
+import { fetchCountries } from '@/services/countryService';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -18,17 +19,19 @@ export const metadata: Metadata = {
   description: 'Test your knowledge about country flags!',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const countries = await fetchCountries();
+
   return (
     <html lang='en'>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QuizProvider>{children}</QuizProvider>
+        <QuizProvider initialCountries={countries}>{children}</QuizProvider>
       </body>
     </html>
   );
