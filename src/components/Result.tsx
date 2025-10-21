@@ -35,24 +35,24 @@ export default function Result() {
       return {
         grade: content.result.grades.excellent,
         emoji: '🎉',
-        color: 'text-green-500',
+        color: 'text-green-600',
       };
     if (percentage >= 70)
       return {
         grade: content.result.grades.greatJob,
         emoji: '👏',
-        color: 'text-blue-500',
+        color: 'text-blue-600',
       };
     if (percentage >= 50)
       return {
         grade: content.result.grades.goodEffort,
         emoji: '👍',
-        color: 'text-yellow-500',
+        color: 'text-yellow-600',
       };
     return {
       grade: content.result.grades.keepPracticing,
       emoji: '💪',
-      color: 'text-orange-500',
+      color: 'text-orange-600',
     };
   };
 
@@ -87,7 +87,7 @@ export default function Result() {
             </h3>
             <div className='grid grid-cols-3 gap-4 text-center'>
               <div className='bg-white rounded-xl p-4 border-2 border-green-100'>
-                <div className='text-3xl font-bold text-green-500 mb-1'>
+                <div className='text-3xl font-bold text-green-600 mb-1'>
                   {score}
                 </div>
                 <div className='text-sm font-medium text-gray-600'>
@@ -95,7 +95,7 @@ export default function Result() {
                 </div>
               </div>
               <div className='bg-white rounded-xl p-4 border-2 border-red-100'>
-                <div className='text-3xl font-bold text-red-500 mb-1'>
+                <div className='text-3xl font-bold text-red-600 mb-1'>
                   {questions.length - score}
                 </div>
                 <div className='text-sm font-medium text-gray-600'>
@@ -103,7 +103,7 @@ export default function Result() {
                 </div>
               </div>
               <div className='bg-white rounded-xl p-4 border-2 border-blue-100'>
-                <div className='text-3xl font-bold text-blue-500 mb-1'>
+                <div className='text-3xl font-bold text-blue-600 mb-1'>
                   {questions.length}
                 </div>
                 <div className='text-sm font-medium text-gray-600'>
